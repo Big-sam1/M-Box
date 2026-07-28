@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-Box - Your Premium Movie Streaming Platform</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Mateza Translation Script -->
+    <script src="https://cdn.mateza.app/v1/mateza.js" data-key="mtz_livelvMeXzavcuNQnBWlKYKYpmujtSblIwXiPosBXLoQjJucvDgYoLSQTLpINQsScubF" defer></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
+    <!-- Favicon logo -->
+     
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hidden Google Translate Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#" class="logo">
+                    <span class="logo-relax">M-</span><span class="logo-mv">Box</span>
+                </a>
+                
+                <div class="nav-links desktop-only">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#movies" class="nav-link">Movies</a>
+                    <a href="#tv-shows" class="nav-link">TV Shows</a>
+                    <a href="#my-list" class="nav-link">My List</a>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="">
+                </div>
+                
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <div class="notification-container" id="notificationContainer">
+                    <button class="notification-btn" id="notificationBtn" aria-label="Notifications" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot" id="notificationDot"></span>
+                    </button>
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <div class="notification-header">
+                            <i class="fas fa-film"></i>
+                            <span>Notifications</span>
+                        </div>
+                        <div class="notification-body">
+                            <div class="notification-item">
+                                <i class="fas fa-star notification-icon"></i>
+                                <div class="notification-content">
+                                    <h4>Welcome to M-Box! 🍿</h4>
+                                    <p>Your premium destination for cinematic entertainment. Explore trending movies, watch trailers, and stream live TMDb content!</p>
+                                    <span class="notification-time">Just now</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mateza Translation Selector (Replaced Account Icon) -->
+                <div class="mateza-translate-container" id="matezaTranslateContainer">
+                    <button class="mateza-translate-btn" id="matezaTranslateBtn" title="Translate Website" aria-label="Translate Website">
+                        <i class="fas fa-globe"></i>
+                        <span class="translate-text" id="currentLangText">Translate</span>
+                    </button>
+                    <div class="translate-dropdown" id="translateDropdown">
+                        <button class="translate-option" onclick="changeLanguage('en', 'English')">🇺🇸 English</button>
+                        <button class="translate-option" onclick="changeLanguage('es', 'Español')">🇪🇸 Español</button>
+                        <button class="translate-option" onclick="changeLanguage('fr', 'Français')">🇫🇷 Français</button>
+                        <button class="translate-option" onclick="changeLanguage('de', 'Deutsch')">🇩🇪 Deutsch</button>
+                        <button class="translate-option" onclick="changeLanguage('ar', 'العربية')">🇸🇦 العربية</button>
+                        <button class="translate-option" onclick="changeLanguage('it', 'Italiano')">🇮🇹 Italiano</button>
+                        <button class="translate-option" onclick="changeLanguage('ja', '日本語')">🇯🇵 日本語</button>
+                        <button class="translate-option" onclick="changeLanguage('zh-CN', '中文')">🇨🇳 中文</button>
+                        <button class="translate-option" onclick="changeLanguage('pt', 'Português')">🇵🇹 Português</button>
+                        <button class="translate-option" onclick="changeLanguage('ru', 'Русский')">🇷🇺 Русский</button>
+                        <button class="translate-option" onclick="changeLanguage('hi', 'हिन्दी')">🇮🇳 हिन्दी</button>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#movies" class="mobile-link">Movies</a>
+            <a href="#tv-shows" class="mobile-link">TV Shows</a>
+            <a href="#my-list" class="mobile-link">My List</a>
+            <div class="mobile-menu-divider"></div>
+            <a href="#profile" class="mobile-link">My Profile</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-slide active" id="heroSlide">
+            <div class="hero-background"></div>
+            <div class="hero-gradient"></div>
+            
+            <div class="hero-content">
+                <div class="hero-badge">Trending Now</div>
+                <h1 class="hero-title" id="heroTitle">Dune: Part Two</h1>
+                <p class="hero-tagline" id="heroTagline">Long live the fighters.</p>
+                
+                <div class="hero-info">
+                    <span class="hero-rating"><i class="fas fa-star"></i> 8.8</span>
+                    <span class="hero-year">2024</span>
+                    <span class="hero-age-rating">PG-13</span>
+                    <span class="hero-duration">2h 46m</span>
+                </div>
+                
+                <p class="hero-synopsis" id="heroSynopsis">
+                    Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a warpath of revenge against the conspirators who destroyed his family.
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="openMovieModal(currentHeroMovie)">
+                        <i class="fas fa-play"></i> Watch Trailer
+                    </button>
+                    <button class="btn btn-secondary" onclick="openMovieModal(currentHeroMovie)">
+                        <i class="fas fa-info-circle"></i> More Info
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Indicators -->
+        <div class="hero-indicators" id="heroIndicators"></div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-header">
+                <div class="filter-title">
+                    <i class="fas fa-filter"></i>
+                    <span>Filter Movies</span>
+                </div>
+                
+                <div class="filter-controls">
+                    <div class="filter-select">
+                        <select id="genreFilter">
+                            <option value="">All Genres</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="animation">Animation</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="crime">Crime</option>
+                            <option value="documentary">Documentary</option>
+                            <option value="drama">Drama</option>
+                            <option value="family">Family</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="history">History</option>
+                            <option value="horror">Horror</option>
+                            <option value="music">Music</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="romance">Romance</option>
+                            <option value="sci-fi">Sci-Fi</option>
+                            <option value="tv-movie">TV Movie</option>
+                            <option value="thriller">Thriller</option>
+                            <option value="war">War</option>
+                            <option value="western">Western</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <div class="filter-select">
+                        <select id="yearFilter">
+                            <option value="">Year</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="older">Older than 2016</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <div class="filter-select">
+                        <select id="countryFilter">
+                            <option value="">Country</option>
+                            <option value="US">USA</option>
+                            <option value="GB">UK</option>
+                            <option value="CA">Canada</option>
+                            <option value="FR">France</option>
+                            <option value="DE">Germany</option>
+                            <option value="JP">Japan</option>
+                            <option value="KR">South Korea</option>
+                            <option value="IN">India</option>
+                            <option value="ES">Spain</option>
+                            <option value="IT">Italy</option>
+                            <option value="AU">Australia</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movie Carousels -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Search Results (hidden by default) -->
+            <section class="movie-section search-results-section" id="searchResultsSection" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        Search Results <span id="searchQueryTitle" style="font-weight: 400; font-size: 1rem; color: var(--text-secondary);"></span>
+                    </h2>
+                    <button class="btn btn-secondary" onclick="clearSearchResults()" style="padding: 0.4rem 1rem; font-size: 0.8rem;">
+                        <i class="fas fa-times"></i> Clear Search
+                    </button>
+                </div>
+                <div class="search-results-grid" id="searchResultsGrid"></div>
+            </section>
+
+            <!-- Trending Now -->
+            <section class="movie-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        Trending Now
+                    </h2>
+                    <button class="carousel-btn carousel-prev" onclick="scrollCarousel('trending', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next" onclick="scrollCarousel('trending', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="movie-carousel" id="trending"></div>
+            </section>
+
+            <!-- New Releases -->
+            <section class="movie-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        New Releases
+                    </h2>
+                    <button class="carousel-btn carousel-prev" onclick="scrollCarousel('new-releases', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next" onclick="scrollCarousel('new-releases', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="movie-carousel" id="new-releases"></div>
+            </section>
+
+            <!-- Action Hits -->
+            <section class="movie-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        Action Hits
+                    </h2>
+                    <button class="carousel-btn carousel-prev" onclick="scrollCarousel('action', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next" onclick="scrollCarousel('action', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="movie-carousel" id="action"></div>
+            </section>
+
+            <!-- Sci-Fi Adventures -->
+            <section class="movie-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        Sci-Fi Adventures
+                    </h2>
+                    <button class="carousel-btn carousel-prev" onclick="scrollCarousel('scifi', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next" onclick="scrollCarousel('scifi', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="movie-carousel" id="scifi"></div>
+            </section>
+
+            <!-- Critically Acclaimed -->
+            <section class="movie-section" id="movies">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        Critically Acclaimed
+                    </h2>
+                    <button class="carousel-btn carousel-prev" onclick="scrollCarousel('acclaimed', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next" onclick="scrollCarousel('acclaimed', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="movie-carousel" id="acclaimed"></div>
+            </section>
+
+            <!-- Popular TV Shows -->
+            <section class="movie-section" id="tv-shows">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        Popular TV Shows
+                    </h2>
+                    <button class="carousel-btn carousel-prev" onclick="scrollCarousel('tv-shows-carousel', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next" onclick="scrollCarousel('tv-shows-carousel', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="movie-carousel" id="tv-shows-carousel"></div>
+            </section>
+
+            <!-- My Watchlist -->
+            <section class="movie-section" id="my-list">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        My Watchlist
+                    </h2>
+                    <button class="carousel-btn carousel-prev" onclick="scrollCarousel('my-list-carousel', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next" onclick="scrollCarousel('my-list-carousel', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="movie-carousel" id="my-list-carousel"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2 class="footer-brand">M-Box</h2>
+                    <p class="footer-description">
+                        Your premium destination for cinematic entertainment. Stream the latest movies and TV shows in high quality.
+                    </p>
+                    <div class="newsletter">
+                        <p class="newsletter-title">Subscribe to newsletter</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Email address" class="newsletter-input">
+                            <button class="newsletter-btn">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-heading">Browse</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">New Releases</a></li>
+                        <li><a href="#">Trending Now</a></li>
+                        <li><a href="#">Coming Soon</a></li>
+                        <li><a href="#">Categories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-heading">Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Account & Billing</a></li>
+                        <li><a href="#">Plans & Pricing</a></li>
+                        <li><a href="#">Supported Devices</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Cookie Preferences</a></li>
+                        <li><a href="#">Corporate Information</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="copyright">© 2024 M-Box. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Movie Detail Modal -->
+    <div class="modal" id="movieModal">
+        <div class="modal-overlay" onclick="closeMovieModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeMovieModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-hero">
+                <img src="" alt="" class="modal-backdrop" id="modalBackdrop">
+                <div class="modal-hero-gradient"></div>
+                <div class="modal-hero-content">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <p class="modal-tagline" id="modalTagline"></p>
+                    
+                    <div class="modal-info">
+                        <span class="modal-rating" id="modalRating"></span>
+                        <span id="modalDuration"></span>
+                        <span id="modalYear"></span>
+                        <span class="modal-age" id="modalAge"></span>
+                    </div>
+                    
+                    <div class="modal-buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-play"></i> Watch Now
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-plus"></i> Add to List
+                        </button>
+                        <button class="btn btn-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-main">
+                    <section class="modal-section">
+                        <h3 class="modal-section-title">Storyline</h3>
+                        <p class="modal-synopsis" id="modalSynopsis"></p>
+                        <div class="modal-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Director</span>
+                                <span class="detail-value" id="modalDirector"></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Country</span>
+                                <span class="detail-value" id="modalCountry"></span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="modal-section">
+                        <h3 class="modal-section-title">Top Cast</h3>
+                        <div class="cast-grid" id="modalCast"></div>
+                    </section>
+
+                    <section class="modal-section">
+                        <h3 class="modal-section-title">Official Trailer</h3>
+                        <div class="video-player">
+                            <iframe id="modalTrailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </section>
+
+                    <section class="modal-section">
+                        <h3 class="modal-section-title">Reviews & Ratings</h3>
+                        <div class="reviews-container" id="modalReviews"></div>
+                    </section>
+                </div>
+
+                <aside class="modal-sidebar">
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">Movie Info</h3>
+                        <div class="sidebar-info" id="modalSidebarInfo"></div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll To Top Floating Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Go to Top" title="Go to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
